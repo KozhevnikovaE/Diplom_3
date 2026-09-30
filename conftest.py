@@ -7,12 +7,13 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from locators.main_page_locators import MainPageLocators
+from helpers.api_helpers import BASE_URL, BASE_URL_API
 
 @pytest.fixture
 def api_client():
     class APIClient:
         def post(self, endpoint, json=None):
-            url = f"https://stellarburgers.education-services.ru/api{endpoint}"
+            url = f"{BASE_URL_API}{endpoint}"
             return requests.post(url, json=json)
     return APIClient()
 
@@ -38,7 +39,7 @@ def driver(request):
     else:
         raise ValueError(f"Unsupported browser: {browser}")
 
-    driver.get("https://stellarburgers.education-services.ru")
+    driver.get(BASE_URL)
     driver.maximize_window()
 
     try:

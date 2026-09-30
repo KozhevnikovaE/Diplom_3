@@ -1,7 +1,8 @@
 import allure
 import requests
 
-BASE_URL = "https://stellarburgers.education-services.ru/api"
+BASE_URL_API = "https://stellarburgers.education-services.ru/api"
+BASE_URL = "https://stellarburgers.education-services.ru" 
 
 
 @allure.step("Создание пользователя и получение токена")
